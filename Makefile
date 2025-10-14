@@ -15,8 +15,8 @@ LDFLAGS = -ldflags "-X $(SERVICE_PATH).BuildTime=$(BUILD_TIME) -X $(SERVICE_PATH
 all: audit test build
 
 .PHONY: audit
-audit:
-	set -o pipefail; go list -json -m all | nancy sleuth
+audit: generate-prod
+	dis-vulncheck --build-tags=production
 
 .PHONY: lint
 lint:
