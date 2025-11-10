@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -197,11 +197,11 @@ func TestMapDescriptionsCollapsible(t *testing.T) {
 			sut := mapDescriptionsCollapsible(mockDescriptions, mockPageDims)
 
 			Convey("Then the collapsible items are mapped as expected", func() {
-				mockedCollapsible := []coreModel.CollapsibleItem{
+				mockedCollapsible := []core.CollapsibleItem{
 					{
 						Subheading: "Area type",
 						Content:    []string(nil),
-						SafeHTML: coreModel.Localisation{
+						SafeHTML: core.Localisation{
 							LocaleKey: "VariableInfoAreaType",
 							Plural:    1,
 						},
@@ -209,12 +209,12 @@ func TestMapDescriptionsCollapsible(t *testing.T) {
 					{
 						Subheading: "Test area dim",
 						Content:    []string{"A description on one line"},
-						SafeHTML:   coreModel.Localisation{},
+						SafeHTML:   core.Localisation{},
 					},
 					{
 						Subheading: "Coverage",
 						Content:    []string(nil),
-						SafeHTML: coreModel.Localisation{
+						SafeHTML: core.Localisation{
 							LocaleKey: "VariableInfoCoverage",
 							Plural:    1,
 						},
@@ -222,7 +222,7 @@ func TestMapDescriptionsCollapsible(t *testing.T) {
 					{
 						Subheading: "Test dim 2",
 						Content:    []string{"A description on one line", "Then a line break"},
-						SafeHTML:   coreModel.Localisation{},
+						SafeHTML:   core.Localisation{},
 					},
 				}
 				So(sut, ShouldResemble, mockedCollapsible)

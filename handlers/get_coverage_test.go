@@ -6,14 +6,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-api-clients-go/v2/zebedee"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	gomock "github.com/golang/mock/gomock"
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
@@ -70,7 +70,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")
@@ -132,7 +132,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")
@@ -194,7 +194,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")
@@ -269,7 +269,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")
@@ -345,7 +345,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")
@@ -420,7 +420,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")
@@ -497,7 +497,7 @@ func TestGetCoverageHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.
 					EXPECT().
 					BuildPage(gomock.Any(), gomock.Any(), "coverage")

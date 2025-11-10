@@ -8,20 +8,20 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-api-clients-go/v2/zebedee"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 // Mapper represents the core mappings required for all pages
 type Mapper struct {
 	req        *http.Request
-	basePage   coreModel.Page
+	basePage   core.Page
 	eb         zebedee.EmergencyBanner
 	lang       string
 	serviceMsg string
@@ -29,7 +29,7 @@ type Mapper struct {
 }
 
 // NewMapper creates a new instance of Mapper
-func NewMapper(request *http.Request, basePage coreModel.Page, emergencyBanner zebedee.EmergencyBanner, language, serviceMsg, filterId string) *Mapper {
+func NewMapper(request *http.Request, basePage core.Page, emergencyBanner zebedee.EmergencyBanner, language, serviceMsg, filterId string) *Mapper {
 	return &Mapper{
 		req:        request,
 		basePage:   basePage,
@@ -106,7 +106,7 @@ func getAddOptionStr(isParentSearch bool) string {
 }
 
 // mapCommonProps maps common properties on all filter/flex pages
-func mapCommonProps(req *http.Request, p *coreModel.Page, pageType, title, lang, serviceMsg string, eb zebedee.EmergencyBanner) {
+func mapCommonProps(req *http.Request, p *core.Page, pageType, title, lang, serviceMsg string, eb zebedee.EmergencyBanner) {
 	mapCookiePreferences(req, &p.CookiesPreferencesSet, &p.CookiesPolicy)
 	p.BetaBannerEnabled = true
 	p.Type = pageType
@@ -119,10 +119,10 @@ func mapCommonProps(req *http.Request, p *coreModel.Page, pageType, title, lang,
 }
 
 // mapCookiePreferences reads cookie policy and preferences cookies and then maps the values to the page model
-func mapCookiePreferences(req *http.Request, preferencesIsSet *bool, policy *coreModel.CookiesPolicy) {
+func mapCookiePreferences(req *http.Request, preferencesIsSet *bool, policy *core.CookiesPolicy) {
 	preferencesCookie := cookies.GetONSCookiePreferences(req)
 	*preferencesIsSet = preferencesCookie.IsPreferenceSet
-	*policy = coreModel.CookiesPolicy{
+	*policy = core.CookiesPolicy{
 		Communications: preferencesCookie.Policy.Campaigns,
 		Essential:      preferencesCookie.Policy.Essential,
 		Settings:       preferencesCookie.Policy.Settings,
@@ -131,8 +131,8 @@ func mapCookiePreferences(req *http.Request, preferencesIsSet *bool, policy *cor
 }
 
 // mapEmergencyBanner maps relevant emergency banner data
-func mapEmergencyBanner(bannerData zebedee.EmergencyBanner) coreModel.EmergencyBanner {
-	var mappedEmergencyBanner coreModel.EmergencyBanner
+func mapEmergencyBanner(bannerData zebedee.EmergencyBanner) core.EmergencyBanner {
+	var mappedEmergencyBanner core.EmergencyBanner
 	emptyBannerObj := zebedee.EmergencyBanner{}
 	if bannerData != emptyBannerObj {
 		mappedEmergencyBanner.Title = bannerData.Title
@@ -212,7 +212,7 @@ func mapAreaTypesToSelection(areaTypes []population.AreaType) []model.Selection 
 }
 
 // mapPanel is a helper function that returns a mapped panel
-func mapPanel(locale coreModel.Localisation, language string, utilityCssClasses []string) model.Panel {
+func mapPanel(locale core.Localisation, language string, utilityCssClasses []string) model.Panel {
 	return model.Panel{
 		Body:       helper.Localise(locale.LocaleKey, language, locale.Plural),
 		Language:   language,

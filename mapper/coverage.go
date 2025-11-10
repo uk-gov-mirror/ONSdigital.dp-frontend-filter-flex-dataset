@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/config"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/pagination"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
@@ -24,7 +24,7 @@ func (m *Mapper) CreateGetCoverage(geogName, nameQ, parentQ, parentArea, setPare
 		Page: m.basePage,
 	}
 	mapCommonProps(m.req, &p.Page, coveragePageType, coverageTitle, m.lang, m.serviceMsg, m.eb)
-	p.Breadcrumb = []coreModel.TaxonomyNode{
+	p.Breadcrumb = []core.TaxonomyNode{
 		{
 			Title: helper.Localise("Back", m.lang, 1),
 			URI:   fmt.Sprintf("/filters/%s/dimensions", m.fid),
@@ -103,9 +103,9 @@ func (m *Mapper) CreateGetCoverage(geogName, nameQ, parentQ, parentArea, setPare
 	}
 
 	totalPages := pagination.GetTotalPages(areas.TotalCount, areas.Limit)
-	var paginatedResults coreModel.Pagination
+	var paginatedResults core.Pagination
 	if totalPages > 1 {
-		paginatedResults = coreModel.Pagination{
+		paginatedResults = core.Pagination{
 			CurrentPage:       currentPage,
 			TotalPages:        totalPages,
 			Limit:             areas.Limit,
@@ -140,11 +140,11 @@ func (m *Mapper) CreateGetCoverage(geogName, nameQ, parentQ, parentArea, setPare
 	}
 
 	if hasValidationErr {
-		p.Page.Error = coreModel.Error{
+		p.Page.Error = core.Error{
 			Title: p.Metadata.Title,
-			ErrorItems: []coreModel.ErrorItem{
+			ErrorItems: []core.ErrorItem{
 				{
-					Description: coreModel.Localisation{
+					Description: core.Localisation{
 						LocaleKey: "CoverageSelectDefault",
 						Plural:    1,
 					},

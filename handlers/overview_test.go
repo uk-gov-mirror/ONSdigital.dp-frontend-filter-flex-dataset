@@ -6,6 +6,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
@@ -13,8 +15,6 @@ import (
 	"github.com/ONSdigital/dp-api-clients-go/v2/zebedee"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	gomock "github.com/golang/mock/gomock"
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
@@ -65,7 +65,7 @@ func TestOverviewHandler(t *testing.T) {
 						},
 					},
 				}
-				mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+				mockRend.EXPECT().NewBasePageModel().Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), "overview")
 				mockFc.EXPECT().GetFilter(ctx, gomock.Any()).Return(&filter.GetFilterResponse{}, nil)
 				mockFc.EXPECT().GetDimensions(ctx, gomock.Any(), gomock.Any(), gomock.Any(), gomock.Any(), gomock.Any()).Return(mockFilterDims, "", nil)
@@ -124,7 +124,7 @@ func TestOverviewHandler(t *testing.T) {
 						},
 					},
 				}
-				mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+				mockRend.EXPECT().NewBasePageModel().Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), "overview")
 				mockFc.EXPECT().GetFilter(ctx, gomock.Any()).Return(&filter.GetFilterResponse{}, nil)
 				mockFc.EXPECT().GetDimensions(ctx, gomock.Any(), gomock.Any(), gomock.Any(), gomock.Any(), gomock.Any()).Return(mockFilterDims, "", nil)
@@ -175,7 +175,7 @@ func TestOverviewHandler(t *testing.T) {
 				mockFc := NewMockFilterClient(mockCtrl)
 				mockPc := NewMockPopulationClient(mockCtrl)
 
-				mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+				mockRend.EXPECT().NewBasePageModel().Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 				mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), "overview")
 				mockFc.EXPECT().GetFilter(ctx, gomock.Any()).Return(&filter.GetFilterResponse{}, nil)
 				mockFc.EXPECT().GetDimensions(ctx, gomock.Any(), gomock.Any(), gomock.Any(), gomock.Any(), gomock.Any()).Return(dims, "", nil)
@@ -368,7 +368,7 @@ func TestOverviewHandler(t *testing.T) {
 						mockRend.
 							EXPECT().
 							NewBasePageModel().
-							Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+							Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 							AnyTimes()
 						mockRend.
 							EXPECT().
@@ -464,7 +464,7 @@ func TestOverviewHandler(t *testing.T) {
 						mockRend.
 							EXPECT().
 							NewBasePageModel().
-							Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+							Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 							AnyTimes()
 						mockRend.
 							EXPECT().
@@ -572,7 +572,7 @@ func TestOverviewHandler(t *testing.T) {
 						mockRend.
 							EXPECT().
 							NewBasePageModel().
-							Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+							Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 							AnyTimes()
 						mockRend.
 							EXPECT().
@@ -686,7 +686,7 @@ func TestOverviewHandler(t *testing.T) {
 						mockRend.
 							EXPECT().
 							NewBasePageModel().
-							Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+							Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 							AnyTimes()
 						mockRend.
 							EXPECT().
@@ -802,7 +802,7 @@ func TestOverviewHandler(t *testing.T) {
 						mockRend.
 							EXPECT().
 							NewBasePageModel().
-							Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+							Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 							AnyTimes()
 						mockRend.
 							EXPECT().

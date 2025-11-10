@@ -4,19 +4,19 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestCreateCategorisationsSelector(t *testing.T) {
 	helper.InitialiseLocalisationsHelper(mocks.MockAssetFunction)
-	mdl := coreModel.Page{}
+	mdl := core.Page{}
 	req := httptest.NewRequest("", "/", nil)
 	lang := "en"
 	eb := getTestEmergencyBanner()
@@ -295,7 +295,7 @@ func TestCreateAreaTypeSelector(t *testing.T) {
 	eb := getTestEmergencyBanner()
 	sm := getTestServiceMessage()
 	req := httptest.NewRequest("", "/", nil)
-	m := NewMapper(req, coreModel.Page{}, eb, "en", sm, "12345")
+	m := NewMapper(req, core.Page{}, eb, "en", sm, "12345")
 	Convey("Given a slice of geography areas", t, func() {
 		areas := []population.AreaType{
 			{ID: "one", Label: "One", Description: "One description", TotalCount: 1},

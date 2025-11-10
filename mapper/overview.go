@@ -6,14 +6,14 @@ import (
 	"sort"
 	"strconv"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/config"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 // CreateFilterFlexOverview maps data to the Overview model
@@ -112,8 +112,8 @@ func (m *Mapper) CreateFilterFlexOverview(filterJob filter.GetFilterResponse, fi
 		coverage,
 	}, p.Dimensions...)
 
-	p.DimensionDescriptions = coreModel.Collapsible{
-		Title: coreModel.Localisation{
+	p.DimensionDescriptions = core.Collapsible{
+		Title: core.Localisation{
 			LocaleKey: "VariableExplanation",
 			Plural:    4,
 		},
@@ -128,15 +128,15 @@ func (m *Mapper) CreateFilterFlexOverview(filterJob filter.GetFilterResponse, fi
 			p.Panel = *m.mapBlockedAreasPanel(&sdc, maxCellsError, model.Pending)
 
 			areaTypeUri, dimNames := mapImproveResultsCollapsible(p.Dimensions)
-			p.ImproveResults = coreModel.Collapsible{
-				Title: coreModel.Localisation{
+			p.ImproveResults = core.Collapsible{
+				Title: core.Localisation{
 					LocaleKey: "ImproveResultsTitle",
 					Plural:    4,
 				},
-				CollapsibleItems: []coreModel.CollapsibleItem{
+				CollapsibleItems: []core.CollapsibleItem{
 					{
 						Subheading: helper.Localise("ImproveResultsSubHeading", m.lang, 1),
-						SafeHTML: coreModel.Localisation{
+						SafeHTML: core.Localisation{
 							Text: helper.Localise("ImproveResultsList", m.lang, 1, areaTypeUri, dimNames),
 						},
 					},
@@ -153,11 +153,11 @@ func (m *Mapper) CreateFilterFlexOverview(filterJob filter.GetFilterResponse, fi
 	}
 
 	if isMaxVariablesError(&sdc) {
-		p.Page.Error = coreModel.Error{
+		p.Page.Error = core.Error{
 			Title: helper.Localise("MaximumVariablesErrorTitle", m.lang, 1),
-			ErrorItems: []coreModel.ErrorItem{
+			ErrorItems: []core.ErrorItem{
 				{
-					Description: coreModel.Localisation{
+					Description: core.Localisation{
 						LocaleKey: "MaximumVariablesErrorDescription",
 						Plural:    1,
 					},
@@ -176,16 +176,16 @@ func (m *Mapper) CreateFilterFlexOverview(filterJob filter.GetFilterResponse, fi
 	return p
 }
 
-func buildBreadcrumb(dataset filter.Dataset, isCustom bool, lang string) []coreModel.TaxonomyNode {
+func buildBreadcrumb(dataset filter.Dataset, isCustom bool, lang string) []core.TaxonomyNode {
 	if isCustom {
-		return []coreModel.TaxonomyNode{
+		return []core.TaxonomyNode{
 			{
 				Title: helper.Localise("CustomBack", lang, 1),
 				URI:   "/datasets/create",
 			},
 		}
 	} else {
-		return []coreModel.TaxonomyNode{
+		return []core.TaxonomyNode{
 			{
 				Title: helper.Localise("Back", lang, 1),
 				URI: fmt.Sprintf("/datasets/%s/editions/%s/versions/%s",

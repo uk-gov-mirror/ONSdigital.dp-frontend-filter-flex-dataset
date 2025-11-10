@@ -8,6 +8,8 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
@@ -15,8 +17,6 @@ import (
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	gomock "github.com/golang/mock/gomock"
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
@@ -55,7 +55,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 
 				mockDc := NewMockDatasetClient(mockCtrl)
@@ -103,7 +103,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend.
 					EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 				mockRend.
 					EXPECT().
@@ -236,7 +236,7 @@ func TestDimensionsHandler(t *testing.T) {
 					mockRend := NewMockRenderClient(mockCtrl)
 					mockRend.EXPECT().
 						NewBasePageModel().
-						Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+						Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 						AnyTimes()
 
 					// Validate page data contains sorted selections
@@ -357,7 +357,7 @@ func TestDimensionsHandler(t *testing.T) {
 					mockRend := NewMockRenderClient(mockCtrl)
 					mockRend.EXPECT().
 						NewBasePageModel().
-						Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+						Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 						AnyTimes()
 
 					mockRend.EXPECT().
@@ -423,7 +423,7 @@ func TestDimensionsHandler(t *testing.T) {
 					mockRend := NewMockRenderClient(mockCtrl)
 					mockRend.EXPECT().
 						NewBasePageModel().
-						Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+						Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 						AnyTimes()
 
 					mockRend.
@@ -483,7 +483,7 @@ func TestDimensionsHandler(t *testing.T) {
 					mockRend := NewMockRenderClient(mockCtrl)
 					mockRend.EXPECT().
 						NewBasePageModel().
-						Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+						Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 						AnyTimes()
 
 					mockRend.
@@ -549,7 +549,7 @@ func TestDimensionsHandler(t *testing.T) {
 					mockRend.
 						EXPECT().
 						NewBasePageModel().
-						Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+						Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 						AnyTimes()
 
 					mockRend.
@@ -614,7 +614,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend := NewMockRenderClient(mockCtrl)
 				mockRend.EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 
 				mockDc := NewMockDatasetClient(mockCtrl)
@@ -668,7 +668,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend := NewMockRenderClient(mockCtrl)
 				mockRend.EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 				mockRend.
 					EXPECT().
@@ -720,7 +720,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend := NewMockRenderClient(mockCtrl)
 				mockRend.EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 
 				mockDc := NewMockDatasetClient(mockCtrl)
@@ -766,7 +766,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend := NewMockRenderClient(mockCtrl)
 				mockRend.EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 
 				mockDc := NewMockDatasetClient(mockCtrl)
@@ -804,7 +804,7 @@ func TestDimensionsHandler(t *testing.T) {
 				mockRend := NewMockRenderClient(mockCtrl)
 				mockRend.EXPECT().
 					NewBasePageModel().
-					Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
+					Return(core.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain)).
 					AnyTimes()
 
 				mockDc := NewMockDatasetClient(mockCtrl)

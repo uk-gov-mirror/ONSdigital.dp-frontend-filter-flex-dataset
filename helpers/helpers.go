@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ONSdigital/dp-renderer/v2/helper"
+	"github.com/ONSdigital/dis-design-system-go/helper"
 	"github.com/ONSdigital/log.go/v2/log"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"

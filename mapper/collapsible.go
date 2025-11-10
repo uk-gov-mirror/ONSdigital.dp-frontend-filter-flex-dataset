@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 type Link struct {
@@ -45,14 +45,14 @@ func buildLinksString(dimsLinks []Link) (linkStr string) {
 	return linkStr
 }
 
-func mapDescriptionsCollapsible(dimDescriptions population.GetDimensionsResponse, dims []model.Dimension) []coreModel.CollapsibleItem {
-	var collapsibleContentItems []coreModel.CollapsibleItem
-	var areaItem coreModel.CollapsibleItem
+func mapDescriptionsCollapsible(dimDescriptions population.GetDimensionsResponse, dims []model.Dimension) []core.CollapsibleItem {
+	var collapsibleContentItems []core.CollapsibleItem
+	var areaItem core.CollapsibleItem
 
 	for _, dim := range dims {
 		for _, dimDescription := range dimDescriptions.Dimensions {
 			if dim.ID == dimDescription.ID && !dim.IsGeography {
-				collapsibleContentItems = append(collapsibleContentItems, coreModel.CollapsibleItem{
+				collapsibleContentItems = append(collapsibleContentItems, core.CollapsibleItem{
 					Subheading: cleanDimensionLabel(dimDescription.Label),
 					Content:    strings.Split(dimDescription.Description, "\n"),
 				})
@@ -63,10 +63,10 @@ func mapDescriptionsCollapsible(dimDescriptions population.GetDimensionsResponse
 		}
 	}
 
-	collapsibleContentItems = append([]coreModel.CollapsibleItem{
+	collapsibleContentItems = append([]core.CollapsibleItem{
 		{
 			Subheading: areaTypeTitle,
-			SafeHTML: coreModel.Localisation{
+			SafeHTML: core.Localisation{
 				LocaleKey: "VariableInfoAreaType",
 				Plural:    1,
 			},
@@ -74,7 +74,7 @@ func mapDescriptionsCollapsible(dimDescriptions population.GetDimensionsResponse
 		areaItem,
 		{
 			Subheading: coverageTitle,
-			SafeHTML: coreModel.Localisation{
+			SafeHTML: core.Localisation{
 				LocaleKey: "VariableInfoCoverage",
 				Plural:    1,
 			},

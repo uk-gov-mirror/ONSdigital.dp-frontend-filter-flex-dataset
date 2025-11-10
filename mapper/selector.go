@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/config"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 // CreateCategorisationsSelector maps data to the Selector model
@@ -21,7 +21,7 @@ func (m *Mapper) CreateCategorisationsSelector(dimLabel, dimId string, cats popu
 		Page: m.basePage,
 	}
 	mapCommonProps(m.req, &p.Page, "filter-flex-selector", cleanDimensionLabel(dimLabel), m.lang, m.serviceMsg, m.eb)
-	p.Breadcrumb = []coreModel.TaxonomyNode{
+	p.Breadcrumb = []core.TaxonomyNode{
 		{
 			Title: helper.Localise("Back", m.lang, 1),
 			URI:   fmt.Sprintf("/filters/%s/dimensions", m.fid),
@@ -43,11 +43,11 @@ func (m *Mapper) CreateCategorisationsSelector(dimLabel, dimId string, cats popu
 
 	isValidationError, _ := strconv.ParseBool(m.req.URL.Query().Get("error"))
 	if isValidationError {
-		p.Page.Error = coreModel.Error{
+		p.Page.Error = core.Error{
 			Title: p.Page.Metadata.Title,
-			ErrorItems: []coreModel.ErrorItem{
+			ErrorItems: []core.ErrorItem{
 				{
-					Description: coreModel.Localisation{
+					Description: core.Localisation{
 						LocaleKey: "SelectCategoriesError",
 						Plural:    1,
 					},
@@ -70,7 +70,7 @@ func (m *Mapper) CreateAreaTypeSelector(areaType []population.AreaType, fDim fil
 		Page: m.basePage,
 	}
 	mapCommonProps(m.req, &p.Page, areaPageType, areaTypeTitle, m.lang, m.serviceMsg, m.eb)
-	p.Breadcrumb = []coreModel.TaxonomyNode{
+	p.Breadcrumb = []core.TaxonomyNode{
 		{
 			Title: helper.Localise("Back", m.lang, 1),
 			URI:   fmt.Sprintf("/filters/%s/dimensions", m.fid),
@@ -78,7 +78,7 @@ func (m *Mapper) CreateAreaTypeSelector(areaType []population.AreaType, fDim fil
 	}
 	p.LeadText = helper.Localise("SelectAreaTypeLeadText", m.lang, 1)
 	if hasOpts {
-		p.Panel = mapPanel(coreModel.Localisation{
+		p.Panel = mapPanel(core.Localisation{
 			LocaleKey: "ChangeAreaTypeWarning",
 			Plural:    1,
 		}, m.lang, []string{"ons-u-mb-l"})
@@ -86,11 +86,11 @@ func (m *Mapper) CreateAreaTypeSelector(areaType []population.AreaType, fDim fil
 
 	isValidationError, _ := strconv.ParseBool(m.req.URL.Query().Get("error"))
 	if isValidationError {
-		p.Page.Error = coreModel.Error{
+		p.Page.Error = core.Error{
 			Title: p.Page.Metadata.Title,
-			ErrorItems: []coreModel.ErrorItem{
+			ErrorItems: []core.ErrorItem{
 				{
-					Description: coreModel.Localisation{
+					Description: core.Localisation{
 						LocaleKey: "SelectAreaTypeError",
 						Plural:    1,
 					},

@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"sort"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/config"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 // CreateGetChangeDimensions maps data to the ChangeDimensions model
@@ -19,7 +19,7 @@ func (m *Mapper) CreateGetChangeDimensions(q, formAction string, dims []model.Fi
 	p := model.ChangeDimensions{
 		Page: m.basePage,
 	}
-	p.Breadcrumb = []coreModel.TaxonomyNode{
+	p.Breadcrumb = []core.TaxonomyNode{
 		{
 			Title: helper.Localise("Back", m.lang, 1),
 			URI:   fmt.Sprintf("/filters/%s/dimensions", m.fid),
@@ -81,34 +81,34 @@ func (m *Mapper) CreateGetChangeDimensions(q, formAction string, dims []model.Fi
 			return pageDims[i].Name < pageDims[j].Name
 		})
 		areaTypeUri, dimNames := mapImproveResultsCollapsible(pageDims)
-		p.ImproveResults = coreModel.Collapsible{
-			Title: coreModel.Localisation{
+		p.ImproveResults = core.Collapsible{
+			Title: core.Localisation{
 				LocaleKey: "ImproveResultsTitle",
 				Plural:    4,
 			},
 			Language: m.lang,
-			CollapsibleItems: []coreModel.CollapsibleItem{
+			CollapsibleItems: []core.CollapsibleItem{
 				{
 					Subheading: helper.Localise("ImproveResultsSubHeading", m.lang, 1),
-					SafeHTML: coreModel.Localisation{
+					SafeHTML: core.Localisation{
 						Text: helper.Localise("ImproveResultsListVariant", m.lang, 1, areaTypeUri, dimNames),
 					},
 				},
 			},
 		}
 	} else {
-		p.Panel = mapPanel(coreModel.Localisation{
+		p.Panel = mapPanel(core.Localisation{
 			LocaleKey: "DimensionsChangeWarning",
 			Plural:    1,
 		}, m.lang, []string{"ons-u-mb-s"})
 	}
 
 	if isMaxVariablesError(sdc) {
-		p.Page.Error = coreModel.Error{
+		p.Page.Error = core.Error{
 			Title: helper.Localise("MaximumVariablesErrorTitle", m.lang, 1),
-			ErrorItems: []coreModel.ErrorItem{
+			ErrorItems: []core.ErrorItem{
 				{
-					Description: coreModel.Localisation{
+					Description: core.Localisation{
 						LocaleKey: "MaximumVariablesErrorDescription",
 						Plural:    1,
 					},

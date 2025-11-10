@@ -4,14 +4,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/helpers"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -22,7 +22,7 @@ func TestGetChangeDimensions(t *testing.T) {
 		req := httptest.NewRequest("", "/", nil)
 		eb := getTestEmergencyBanner()
 		sm := getTestServiceMessage()
-		m := NewMapper(req, coreModel.Page{}, eb, lang, sm, "12345")
+		m := NewMapper(req, core.Page{}, eb, lang, sm, "12345")
 
 		Convey("When the parameters are valid", func() {
 			mockFds := []model.FilterDimension{
@@ -244,12 +244,12 @@ func TestGetChangeDimensions(t *testing.T) {
 			Convey("then it sets the SDC panel", func() {
 				So(p.Panel, ShouldResemble, sdcPanel)
 			})
-			improveResults := coreModel.Collapsible{
-				Title: coreModel.Localisation{LocaleKey: "ImproveResultsTitle", Plural: 4},
-				CollapsibleItems: []coreModel.CollapsibleItem{
+			improveResults := core.Collapsible{
+				Title: core.Localisation{LocaleKey: "ImproveResultsTitle", Plural: 4},
+				CollapsibleItems: []core.CollapsibleItem{
 					{
 						Subheading: "Improve results sub heading",
-						SafeHTML: coreModel.Localisation{
+						SafeHTML: core.Localisation{
 							Text: "Improve your results variant",
 						},
 					},
@@ -308,12 +308,12 @@ func TestGetChangeDimensions(t *testing.T) {
 			Convey("then it sets the SDC panel", func() {
 				So(p.Panel, ShouldResemble, sdcPanel)
 			})
-			improveResults := coreModel.Collapsible{
-				Title: coreModel.Localisation{LocaleKey: "ImproveResultsTitle", Plural: 4},
-				CollapsibleItems: []coreModel.CollapsibleItem{
+			improveResults := core.Collapsible{
+				Title: core.Localisation{LocaleKey: "ImproveResultsTitle", Plural: 4},
+				CollapsibleItems: []core.CollapsibleItem{
 					{
 						Subheading: "Improve results sub heading",
-						SafeHTML: coreModel.Localisation{
+						SafeHTML: core.Localisation{
 							Text: "Improve your results variant",
 						},
 					},

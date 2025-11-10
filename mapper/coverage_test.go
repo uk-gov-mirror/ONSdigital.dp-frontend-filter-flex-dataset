@@ -4,12 +4,12 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/ONSdigital/dis-design-system-go/helper"
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/population"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/model"
-	"github.com/ONSdigital/dp-renderer/v2/helper"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -20,7 +20,7 @@ func TestGetCoverage(t *testing.T) {
 		req := httptest.NewRequest("", "/", nil)
 		eb := getTestEmergencyBanner()
 		sm := getTestServiceMessage()
-		m := NewMapper(req, coreModel.Page{}, eb, lang, sm, "12345")
+		m := NewMapper(req, core.Page{}, eb, lang, sm, "12345")
 
 		Convey("When the parameters are valid", func() {
 			coverage := m.CreateGetCoverage(
@@ -333,9 +333,9 @@ func TestGetCoverage(t *testing.T) {
 			})
 
 			Convey("Then it paginates the search results", func() {
-				expectedPagination := coreModel.Pagination{
+				expectedPagination := core.Pagination{
 					CurrentPage: 2,
-					PagesToDisplay: []coreModel.PageToDisplay{
+					PagesToDisplay: []core.PageToDisplay{
 						{
 							PageNumber: 1,
 							URL:        "/?page=1",
@@ -349,7 +349,7 @@ func TestGetCoverage(t *testing.T) {
 							URL:        "/?page=3",
 						},
 					},
-					FirstAndLastPages: []coreModel.PageToDisplay{
+					FirstAndLastPages: []core.PageToDisplay{
 						{
 							PageNumber: 1,
 							URL:        "/?page=1",
@@ -447,11 +447,11 @@ func TestGetCoverage(t *testing.T) {
 		})
 
 		Convey("When an invalid parent search is performed", func() {
-			mockErrStruct := coreModel.Error{
+			mockErrStruct := core.Error{
 				Title: "Coverage",
-				ErrorItems: []coreModel.ErrorItem{
+				ErrorItems: []core.ErrorItem{
 					{
-						Description: coreModel.Localisation{
+						Description: core.Localisation{
 							LocaleKey: "CoverageSelectDefault",
 							Plural:    1,
 						},
@@ -825,9 +825,9 @@ func TestGetCoverage(t *testing.T) {
 			})
 
 			Convey("Then it paginates the search results", func() {
-				expectedPagination := coreModel.Pagination{
+				expectedPagination := core.Pagination{
 					CurrentPage: 2,
-					PagesToDisplay: []coreModel.PageToDisplay{
+					PagesToDisplay: []core.PageToDisplay{
 						{
 							PageNumber: 1,
 							URL:        "/?page=1",
@@ -841,7 +841,7 @@ func TestGetCoverage(t *testing.T) {
 							URL:        "/?page=3",
 						},
 					},
-					FirstAndLastPages: []coreModel.PageToDisplay{
+					FirstAndLastPages: []core.PageToDisplay{
 						{
 							PageNumber: 1,
 							URL:        "/?page=1",

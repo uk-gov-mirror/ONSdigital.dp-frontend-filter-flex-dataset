@@ -5,17 +5,17 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	core "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	"github.com/ONSdigital/dp-api-clients-go/v2/zebedee"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestUnitMapCookiesPreferences(t *testing.T) {
 	req := httptest.NewRequest("", "/", nil)
-	pageModel := coreModel.Page{
+	pageModel := core.Page{
 		CookiesPreferencesSet: false,
-		CookiesPolicy: coreModel.CookiesPolicy{
+		CookiesPolicy: core.CookiesPolicy{
 			Communications: false,
 			Essential:      false,
 			Settings:       false,
@@ -101,8 +101,8 @@ func getTestServiceMessage() string {
 	return "Test service message"
 }
 
-func mappedEmergencyBanner() coreModel.EmergencyBanner {
-	return coreModel.EmergencyBanner{
+func mappedEmergencyBanner() core.EmergencyBanner {
+	return core.EmergencyBanner{
 		Type:        "notable-death",
 		Title:       "This is not not an emergency",
 		Description: "Something has gone wrong",

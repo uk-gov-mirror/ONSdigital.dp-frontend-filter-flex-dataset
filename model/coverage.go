@@ -1,7 +1,7 @@
 package model
 
 import (
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
+	coreModel "github.com/ONSdigital/dis-design-system-go/model"
 )
 
 // Coverage represents the data to display the coverage page
