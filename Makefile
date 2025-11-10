@@ -9,7 +9,7 @@ LOCAL_RENDERER_IN_USE = $(shell grep -c "\"github.com/ONSdigital/dis-design-syst
 
 SERVICE_PATH = github.com/ONSdigital/dp-frontend-filter-flex-dataset/service
 
-LDFLAGS = -ldflags "-X $(SERVICE_PATH).BuildTime=$(BUILD_TIME) -X $(SERVICE_PATH).GitCommit=$(GIT_COMMIT) -X $(SERVICE_PATH).Version=$(VERSION)"
+LDFLAGS = -ldflags "-X $(SERVICE_PATH).BuildTime=$(BUILD_TIME) -X $(SERVICE_PATH).GitCommit=$(GIT_COMMIT) -X $(SERVICE_PATH).Version=$(VERSION) -X github.com/ONSdigital/dp-frontend-filter-flex-dataset/config.RendererVersion=$(APP_RENDERER_VERSION)"
 
 .PHONY: all
 all: audit test build
