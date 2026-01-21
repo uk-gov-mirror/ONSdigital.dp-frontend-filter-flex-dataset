@@ -1,7 +1,7 @@
 package model
 
 import (
-	coreModel "github.com/ONSdigital/dis-design-system-go/model"
+	coreModel "github.com/ONSdigital/dis-design-system-go/v2/model"
 )
 
 // Selector represents page data for the Dimension selection screen

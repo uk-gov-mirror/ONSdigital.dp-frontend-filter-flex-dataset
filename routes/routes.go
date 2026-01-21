@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	render "github.com/ONSdigital/dis-design-system-go"
+	render "github.com/ONSdigital/dis-design-system-go/v2"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dimension"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"

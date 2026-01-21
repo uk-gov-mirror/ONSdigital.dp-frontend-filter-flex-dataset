@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/ONSdigital/dis-design-system-go/helper"
+	"github.com/ONSdigital/dis-design-system-go/v2/helper"
 	"github.com/ONSdigital/dp-frontend-filter-flex-dataset/mocks"
 	. "github.com/smartystreets/goconvey/convey"
 )

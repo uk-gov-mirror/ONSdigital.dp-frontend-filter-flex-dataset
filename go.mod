@@ -22,6 +22,7 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.5.0 // indirect
+	github.com/ONSdigital/dis-design-system-go/v2 v2.0.0 // indirect
 	github.com/c2h5oh/datasize v0.0.0-20231215233829-aa82cc1e6500 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/fatih/color v1.18.0 // indirect

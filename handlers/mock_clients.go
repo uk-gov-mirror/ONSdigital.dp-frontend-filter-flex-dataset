@@ -9,7 +9,7 @@ import (
 	io "io"
 	reflect "reflect"
 
-	model "github.com/ONSdigital/dis-design-system-go/model"
+	model "github.com/ONSdigital/dis-design-system-go/v2/model"
 	cantabular "github.com/ONSdigital/dp-api-clients-go/v2/cantabular"
 	dataset "github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	filter "github.com/ONSdigital/dp-api-clients-go/v2/filter"

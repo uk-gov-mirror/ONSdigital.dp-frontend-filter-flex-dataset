@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	render "github.com/ONSdigital/dis-design-system-go"
-	"github.com/ONSdigital/dis-design-system-go/middleware/renderror"
+	render "github.com/ONSdigital/dis-design-system-go/v2"
+	"github.com/ONSdigital/dis-design-system-go/v2/middleware/renderror"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dataset"
 	"github.com/ONSdigital/dp-api-clients-go/v2/dimension"
 	"github.com/ONSdigital/dp-api-clients-go/v2/filter"

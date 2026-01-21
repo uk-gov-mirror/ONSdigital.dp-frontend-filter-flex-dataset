@@ -1,6 +1,6 @@
 package model
 
-import coreModel "github.com/ONSdigital/dis-design-system-go/model"
+import coreModel "github.com/ONSdigital/dis-design-system-go/v2/model"
 
 // ChangeDimensions represents the data to display a ChangeDimensions page
 type ChangeDimensions struct {

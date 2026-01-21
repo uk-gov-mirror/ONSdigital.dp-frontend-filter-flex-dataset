@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strconv"
 
-	coreModel "github.com/ONSdigital/dis-design-system-go/model"
+	coreModel "github.com/ONSdigital/dis-design-system-go/v2/model"
 )
 
 // GetTotalPages returns the total pages from the total results count and pagesize parameters
